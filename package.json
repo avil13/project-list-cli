@@ -1,0 +1,53 @@
+{
+  "name": "template-ts-package",
+  "version": "1.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "dev": "ts-node --project tsconfig.json src/index.ts",
+    "dev:watch": "nodemon",
+    "lint:fix": "eslint --fix --ext .js,.ts .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "type-check": "tsc -p . --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "rm -rf ./dist && tsc -p ./tsconfig.prod.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && git update-index --again",
+      "pre-push": "yarn test",
+      "post-checkout": "yarn"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix --ext .js,.ts"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.33",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "babel-jest": "^26.6.3",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "nodemon": "^2.0.7",
+    "ts-jest": "^26.5.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
