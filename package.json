@@ -1,5 +1,5 @@
 {
-  "name": "template-ts-package",
+  "name": "project-list",
   "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -31,7 +31,9 @@
       "eslint --fix --ext .js,.ts"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "@avil13/arg": "^1.3.0"
+  },
   "devDependencies": {
     "@babel/core": "7",
     "@types/jest": "^26.0.20",
