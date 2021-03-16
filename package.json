@@ -1,6 +1,6 @@
 {
   "name": "project-list-cli",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/index.js",
   "types": "dist",
@@ -10,8 +10,7 @@
   },
   "files": [
     "dist",
-    "src",
-    "bin"
+    "src"
   ],
   "scripts": {
     "start": "npm run build && node dist/index.js",
