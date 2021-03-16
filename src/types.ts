@@ -15,3 +15,5 @@ export enum MessageCode {
   NOT_FOUND,
   REMOVED,
 }
+
+export const CONFIG_FILE_NAME = '.project-list.json';
