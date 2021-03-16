@@ -1,6 +1,7 @@
 export interface ProjectListConfig {
   list: ProjectListItem[];
   rating: string[];
+  lastProjectPath?: string;
 }
 
 export interface ProjectListItem {
@@ -14,6 +15,9 @@ export enum MessageCode {
   ALREADY_EXISTS_PATH,
   NOT_FOUND,
   REMOVED,
+  WRONG_LAST_PATH,
 }
 
 export const CONFIG_FILE_NAME = '.project-list.json';
+
+export type TMainArgs = 'ls' | 'add' | 'rm' | 'help';

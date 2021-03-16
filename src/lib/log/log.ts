@@ -3,6 +3,10 @@ import { ProjectListItem } from '../../types';
 const delimiter = '❘';
 
 const log = {
+  help(str: string) {
+    console.log(str);
+  },
+
   info(str: string) {
     console.log(str);
   },

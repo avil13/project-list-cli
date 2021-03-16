@@ -1,17 +1,9 @@
-// import { Arg } from '@avil13/arg';
-import { readConfig } from './lib/config-action/read-config';
+import { addCommand } from './commands/add';
+import { lsCommand } from './commands/ls';
+import { rmCommand } from './commands/rm';
+import { checkAndGetConfig } from './lib/config-action/check-and-get-config';
 import { writeConfig } from './lib/config-action/write-config';
-import { getConfigPath } from './lib/config-action/get-config-path';
-import { hasConfig } from './lib/config-action/has-config';
-import { log } from './lib/log/log';
-import { logMessages } from './lib/log/log-messages';
-import { getEmptyConfig } from './lib/config-action/get-empty-config';
-import { ProjectListConfig } from './types';
-import { ask } from './lib/cli-action/ask';
-
-// const arg = new Arg();
-
-// console.log('=>', arg.isEmpty);
+import { TMainArgs } from './types';
 
 // Если нет глобального конфига, предлагаем создать
 //
@@ -19,34 +11,29 @@ import { ask } from './lib/cli-action/ask';
 // [ help, ls, add (in folder), rm (in folder)]
 // после выбора проекта из списка, переходим в него
 
-const configPath = getConfigPath();
-
-const checkAndGetConfig = async (): Promise<ProjectListConfig> => {
-  const isCreated = await hasConfig(configPath);
-
-  if (!isCreated) {
-    await writeConfig(getEmptyConfig(), configPath);
-    log.info(logMessages.configCreated(configPath));
-  }
-
-  return readConfig(configPath);
-};
-
-const run = async () => {
+const main = async (arg: TMainArgs = 'ls') => {
   const conf = await checkAndGetConfig();
+  const pwd = process.cwd();
 
-  if (conf.list.length === 0) {
-    log.warning(logMessages.emptyProjectList);
-    log.info(logMessages.addProject);
-    return;
+  if (arg === 'ls') {
+    await lsCommand(conf);
+  } else if (arg === 'rm') {
+    await rmCommand(conf, pwd);
+  } else if (arg === 'add') {
+    await addCommand(conf, pwd);
   }
 
-  const {item} = await ask(logMessages.chooseProject, conf.list);
-
-  const dir = log.getFilteredPath(item);
-  process.stdout.write(dir);
+  await writeConfig(conf);
 };
 
-run().catch((err) => {
-  console.error(err);
-});
+export { main };
+
+const isMainProcess = require.main === module;
+
+if (isMainProcess) {
+  main()
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
+}
