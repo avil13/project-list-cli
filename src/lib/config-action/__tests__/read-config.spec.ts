@@ -1,4 +1,4 @@
-import { ProjectListConfig } from '@/types';
+import { ProjectListConfig } from '../../types';
 import { readConfig } from '../read-config';
 
 describe('readConfig', () => {

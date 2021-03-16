@@ -1,4 +1,4 @@
-import { CONFIG_FILE_NAME } from '@/types';
+import { CONFIG_FILE_NAME } from '../../types';
 
 export const getConfigPath = (): string => {
   const homeDir = getUserHome();
@@ -6,6 +6,6 @@ export const getConfigPath = (): string => {
   return `${homeDir}/${CONFIG_FILE_NAME}`;
 };
 
-function getUserHome() {
+export function getUserHome(): string {
   return (process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']) || '~/';
 }

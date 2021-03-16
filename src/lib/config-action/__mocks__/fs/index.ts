@@ -1,4 +1,4 @@
-import { ProjectListConfig } from '@/types';
+import { ProjectListConfig } from '../../../../types';
 
 const emptyConfig: ProjectListConfig = {
   list: [],
@@ -18,18 +18,18 @@ const oneItemConfig: ProjectListConfig = {
 const mockWriteFile = jest.fn();
 
 const fsPromises = {
-  async readFile(pathToConfig: string) {
-    if (pathToConfig.includes('empty')) {
-      return JSON.stringify(emptyConfig, null, 2);
-    }
-    return JSON.stringify(oneItemConfig, null, 2);
+  readFile(pathToConfig: string, cb: (arg0: string) => void) {
+    const data = pathToConfig.includes('empty')
+      ? JSON.stringify(emptyConfig, null, 2)
+      : JSON.stringify(oneItemConfig, null, 2);
+    cb(data);
   },
 
-  async writeFile(pathToConfig: string, configString: string) {
+  writeFile(pathToConfig: string, configString: string) {
     mockWriteFile(pathToConfig, configString);
   },
 
-  async stat() {
+  stat() {
     return {
       isFile: () => true,
     };

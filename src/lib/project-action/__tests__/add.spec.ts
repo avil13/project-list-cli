@@ -1,4 +1,4 @@
-import { MessageCode, ProjectListConfig, ProjectListItem } from '@/types';
+import { MessageCode, ProjectListConfig, ProjectListItem } from '../../types';
 import { add } from '../add';
 import { Message } from '../message';
 

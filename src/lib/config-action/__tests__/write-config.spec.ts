@@ -1,6 +1,6 @@
-import { ProjectListConfig } from '@/types';
+import { ProjectListConfig } from '../../types';
 import { writeConfig } from '../write-config';
-import { mockWriteFile } from '../__mocks__/fs/promises';
+import { mockWriteFile } from '../__mocks__/fs';
 
 describe('writeConfig', () => {
   it('write', async () => {

@@ -1,4 +1,4 @@
-import { MessageCode } from '@/types';
+import { MessageCode } from '../../types';
 
 export class Message {
   constructor(

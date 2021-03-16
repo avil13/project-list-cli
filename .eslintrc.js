@@ -28,6 +28,7 @@ module.exports = {
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
 
     // TS
     '@typescript-eslint/camelcase': 'off',
