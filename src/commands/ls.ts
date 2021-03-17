@@ -11,8 +11,6 @@ export const lsCommand = async (conf: ProjectListConfig) => {
     return;
   }
 
-  log.help(logMessages.help);
-
   const { item } = await ask(logMessages.chooseProject, conf.list);
 
   const dir = log.getFilteredPath(item);
