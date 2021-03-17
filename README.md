@@ -1,5 +1,13 @@
 # project-list-cli
 
+ A way to easily navigate to projects in the terminal.
+
+ Quickly switch to the right project.
+
+![project-list-cli demo](https://raw.githubusercontent.com/avil13/project-list-cli/master/assets/project-list-demo.gif)
+
+ ## Installation:
+
 ```sh
 npm install -g project-list-cli
 ```
@@ -11,11 +19,18 @@ pp() {
   project-list $1
   if [[ -z $1 || "$1" == "ls" ]]; then
     DIR_TO_MOVE=$(node -p -e "require('$HOME/.project-list.json').lastProjectPath")
-    if [ ! -z $DIR_TO_MOVE ];then
+    if [ ! -z "$DIR_TO_MOVE" ];then
       cd $DIR_TO_MOVE
     fi
   fi
 }
 
 ```
+## Commands:
 
+ command | description
+|:---|:---|
+ls   | show a list of projects
+add  | add a project to the list, while in the project folder
+rm   | remove project from list, while in the project folder
+help | show help
