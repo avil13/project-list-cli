@@ -10,7 +10,7 @@ describe('readConfig', () => {
     expect(conf).toEqual<ProjectListConfig>({
       list: [],
       rating: [],
-      lastProjectPath: '~',
+      lastProjectPath: '',
     });
   });
 
@@ -26,7 +26,7 @@ describe('readConfig', () => {
         rating: [
           'item 1',
         ],
-        lastProjectPath: '~',
+        lastProjectPath: '',
       },
     );
   });

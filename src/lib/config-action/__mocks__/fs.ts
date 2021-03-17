@@ -3,7 +3,7 @@ import { ProjectListConfig } from '../../../types';
 const emptyConfig: ProjectListConfig = {
   list: [],
   rating: [],
-  lastProjectPath: '~',
+  lastProjectPath: '',
 };
 
 const oneItemConfig: ProjectListConfig = {
@@ -14,7 +14,7 @@ const oneItemConfig: ProjectListConfig = {
   rating: [
     'item 1',
   ],
-  lastProjectPath: '~',
+  lastProjectPath: '',
 };
 
 const fs = {

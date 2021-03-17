@@ -5,7 +5,7 @@ describe('remove', () => {
   let conf: ProjectListConfig = {
     list: [],
     rating: [],
-    lastProjectPath: '~',
+    lastProjectPath: '',
   };
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('remove', () => {
       },
       ],
       rating: [],
-      lastProjectPath: '~',
+      lastProjectPath: '',
     };
   });
 

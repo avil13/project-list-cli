@@ -8,7 +8,7 @@ describe('writeConfig', () => {
     const conf: ProjectListConfig = {
       list: [],
       rating: [],
-      lastProjectPath: '~',
+      lastProjectPath: '',
     };
 
     const res = await writeConfig(conf, '/path/co/conf.json');
