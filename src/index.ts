@@ -26,6 +26,8 @@ const main = async (arg: TMainArgs = 'ls') => {
     await rmCommand(conf, pwd);
   } else if (arg === 'add') {
     await addCommand(conf, pwd);
+  } else if (arg === 'help' || arg === '--help' || arg === '-h') {
+    log.fullHelp(logMessages.fullHelp[0], logMessages.fullHelp[1]);
   } else {
     log.help(logMessages.help);
     return;

@@ -1,5 +1,13 @@
 const logMessages = {
   help: 'HELP: all commands - ls, add (in folder), rm (in folder)',
+  fullHelp: [
+    '"project-list" help:',
+    `list of commands:
+  ls  - show a list of projects
+  add - add a project to the list, while in the project folder
+  rm  - remove project from list, while in the project folder
+`,
+  ],
   configCreated(filePath: string = '') {
     return `Config created in: "${filePath}"`;
   },

@@ -3,13 +3,26 @@ import { ProjectListItem } from '../../types';
 
 const delimiter = '|';
 
+const getCenteredWidth = (str: string): string => {
+  const len = 80;
+  const lenLeft = (len - str.length) / 2 + str.length;
+  return str.padStart(lenLeft).padEnd(len);
+};
+
 const log = {
   help(str: string) {
-    const len = 80;
-    const lenLeft = (len - str.length) / 2 + str.length;
-    const text = str.padStart(lenLeft).padEnd(len);
+    const text = getCenteredWidth(str);
 
     console.log(chalk.bgBlueBright.black(text), '\n');
+  },
+
+  fullHelp(str: string, str2: string) {
+    const text = [
+      chalk.bgBlueBright.black(getCenteredWidth(str)),
+      chalk.bold.blue(str2),
+    ].filter(Boolean).join('\n');
+
+    console.log(text);
   },
 
   info(str: string, str2?: string, str3?: string) {
