@@ -1,9 +1,9 @@
-import {writeFile} from 'fs';
+import fs from 'fs';
 import { promisify } from 'util';
 import { ProjectListConfig } from '../../types';
 import { getConfigPath } from './get-config-path';
 
-const fsWriteFilePromises = promisify(writeFile);
+const fsWriteFilePromises = promisify(fs.writeFile);
 
 export const writeConfig = async (config: ProjectListConfig, pathToConfig?: string) => {
   if (!pathToConfig) {
@@ -13,5 +13,7 @@ export const writeConfig = async (config: ProjectListConfig, pathToConfig?: stri
 
   const configString = JSON.stringify(config, null, 2);
 
-  await fsWriteFilePromises(pathToConfig, configString);
+  return fsWriteFilePromises(pathToConfig, configString)
+    .then(() => true)
+    .catch(() => false);
 };

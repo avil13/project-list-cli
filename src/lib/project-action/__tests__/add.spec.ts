@@ -6,12 +6,14 @@ describe('add command', () => {
   let conf: ProjectListConfig = {
     list: [],
     rating: [],
+    lastProjectPath: '~',
   };
 
   beforeEach(() => {
     conf = {
       list: [],
       rating: [],
+      lastProjectPath: '~',
     };
   });
 

@@ -1,7 +1,9 @@
 import { hasConfig } from '../has-config';
 
-describe.skip('hasConfig', () => {
-  it('', async () => {
+jest.mock('fs');
+
+describe('hasConfig', () => {
+  it('hasConfig simple', async () => {
     const res = await hasConfig('/path/co/conf.json');
 
     expect(res).toBe(true);

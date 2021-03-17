@@ -1,13 +1,16 @@
 import { ProjectListConfig } from '../../../types';
 import { readConfig } from '../read-config';
 
-describe.skip('readConfig', () => {
+jest.mock('fs');
+
+describe('readConfig', () => {
   it('read empty', async () => {
     const conf = await readConfig('/some/path/to/empty-config');
 
-    expect(conf).toEqual({
+    expect(conf).toEqual<ProjectListConfig>({
       list: [],
       rating: [],
+      lastProjectPath: '~',
     });
   });
 
@@ -23,6 +26,7 @@ describe.skip('readConfig', () => {
         rating: [
           'item 1',
         ],
+        lastProjectPath: '~',
       },
     );
   });

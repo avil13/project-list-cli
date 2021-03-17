@@ -1,9 +1,9 @@
-import { readFile } from 'fs';
+import fs from 'fs';
 import { promisify } from 'util';
 import { ProjectListConfig } from '../../types';
 import { getConfigPath } from './get-config-path';
 
-const fsReadFilePromises = promisify(readFile);
+const fsReadFilePromises = promisify(fs.readFile);
 
 export const readConfig = async (pathToConfig?: string): Promise<ProjectListConfig> => {
   if (!pathToConfig) {

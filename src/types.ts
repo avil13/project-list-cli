@@ -1,7 +1,7 @@
 export interface ProjectListConfig {
   list: ProjectListItem[];
   rating: string[];
-  lastProjectPath?: string;
+  lastProjectPath: string;
 }
 
 export interface ProjectListItem {
