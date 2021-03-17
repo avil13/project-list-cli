@@ -55,7 +55,7 @@ const log = {
   },
 
   getFilteredPath(str: string): string {
-    return str.split(delimiter)[1];
+    return str.split(delimiter)[1].trim();
   },
 };
 
