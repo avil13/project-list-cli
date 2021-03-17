@@ -1,4 +1,4 @@
-import { CONFIG_FILE_NAME } from '../../types';
+import { CONFIG_FILE_NAME } from '../../../types';
 import { getConfigPath } from '../get-config-path';
 
 describe('getConfigPath', () => {

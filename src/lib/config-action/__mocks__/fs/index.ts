@@ -29,10 +29,8 @@ const fsPromises = {
     mockWriteFile(pathToConfig, configString);
   },
 
-  stat() {
-    return {
-      isFile: () => true,
-    };
+  stat(_: string, cb: (arg0: { isFile: () => boolean; }) => void) {
+    cb({ isFile: () => true });
   },
 };
 

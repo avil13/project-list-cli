@@ -1,4 +1,4 @@
-import { MessageCode, ProjectListConfig } from '../../types';
+import { MessageCode, ProjectListConfig } from '../../../types';
 import { remove } from '../remove';
 
 describe('remove', () => {
