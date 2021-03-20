@@ -18,14 +18,17 @@ npm install -g project-list-cli
 pp() {
   project-list $1
   if [[ -z $1 || "$1" == "ls" ]]; then
-    DIR_TO_MOVE=$(node -p -e "require('$HOME/.project-list.json').lastProjectPath")
-    if [ ! -z "$DIR_TO_MOVE" ];then
-      cd $DIR_TO_MOVE
+    DIR_TO_GO=$(node -p -e "require('$HOME/.project-list.json').lastProjectPath")
+    if [ ! -z "$DIR_TO_GO" ];then
+      cd $DIR_TO_GO
     fi
   fi
 }
 
 ```
+
+A configuration file will be created automatically in your home directory `~/.project-list.json`
+
 ## Commands:
 
  command | description
