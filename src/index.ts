@@ -17,10 +17,7 @@ const main = async (arg: TMainArgs = 'ls') => {
   const conf = await checkAndGetConfig();
   const pwd = process.cwd();
 
-  if (arg === 'ls' || arg === undefined) {
-    if (!arg) {
-      log.help(logMessages.help);
-    }
+  if (arg === 'ls') {
     await lsCommand(conf);
   } else if (arg === 'rm') {
     await rmCommand(conf, pwd);
