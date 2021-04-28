@@ -9,6 +9,11 @@ inquirer.registerPrompt(
   inquirerAutocompletePrompt,
 );
 
+function checkItem(item: ProjectListItem, filterString: string): boolean {
+  return item.alias.toLowerCase().includes(filterString)
+  || item.path.toLowerCase().includes(filterString);
+}
+
 export const ask = async (message: string, choices: ProjectListItem[]) => {
   const prompt = await inquirer.prompt({
     // @ts-ignore
@@ -16,9 +21,11 @@ export const ask = async (message: string, choices: ProjectListItem[]) => {
     name: 'item',
     message,
     source(_answersSoFar: unknown, input: string = '') {
+      const inputString = input.toLowerCase();
+
       const listItems = choices
         // find items
-        .filter((item) => item.alias.includes(input) || item.path.includes(input));
+        .filter((item) => checkItem(item, inputString));
 
       const list = log.mapToProjectList(listItems);
 
