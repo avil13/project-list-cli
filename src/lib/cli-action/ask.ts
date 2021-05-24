@@ -32,11 +32,10 @@ export const ask = async (message: string, choices: ProjectListItem[]) => {
 };
 
 export function checkItem(item: ProjectListItem, filterString: string): boolean {
-  const list: string[] = [item.alias, item.path];
   const reg = new RegExp(
     filterString.split('').join('.*'),
     'gi',
   );
 
-  return list.some((str) => reg.test(str));
+  return reg.test(item.alias) || item.path.includes(filterString);
 }
