@@ -9,11 +9,6 @@ inquirer.registerPrompt(
   inquirerAutocompletePrompt,
 );
 
-function checkItem(item: ProjectListItem, filterString: string): boolean {
-  return item.alias.toLowerCase().includes(filterString)
-  || item.path.toLowerCase().includes(filterString);
-}
-
 export const ask = async (message: string, choices: ProjectListItem[]) => {
   const prompt = await inquirer.prompt({
     // @ts-ignore
@@ -35,3 +30,13 @@ export const ask = async (message: string, choices: ProjectListItem[]) => {
 
   return prompt;
 };
+
+export function checkItem(item: ProjectListItem, filterString: string): boolean {
+  const list: string[] = [item.alias, item.path];
+  const reg = new RegExp(
+    filterString.split('').join('.*'),
+    'gi',
+  );
+
+  return list.some((str) => reg.test(str));
+}
