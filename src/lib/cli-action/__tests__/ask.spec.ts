@@ -1,4 +1,5 @@
-import { checkItem } from '../ask';
+import { ProjectListItem } from '../../../types';
+import { checkItem, filterChoices } from '../ask';
 
 describe('ask filter', () => {
   it.each<[[string, string], string, boolean]>([
@@ -19,6 +20,26 @@ describe('ask filter', () => {
       }, filterStr);
 
       expect(res).toBe(expected);
+    },
+  );
+
+  it.only.each<[string, ProjectListItem[], ProjectListItem[]]>([
+    [
+      'pro',
+      [{ alias: 'parom', path: '' }, { alias: 'project', path: '' }],
+      [{ alias: 'project', path: '' }, { alias: 'parom', path: '' }],
+    ],
+    [
+      'pj',
+      [{ alias: 'parom', path: '' }, { alias: 'project', path: '' }],
+      [{ alias: 'project', path: '' }],
+    ],
+  ])(
+    'filterChoices("%s")',
+    (input, list, expected) => {
+      const res = filterChoices(input, list);
+
+      expect(res).toEqual(expected);
     },
   );
 });

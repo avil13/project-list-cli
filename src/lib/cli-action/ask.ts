@@ -16,11 +16,7 @@ export const ask = async (message: string, choices: ProjectListItem[]) => {
     name: 'item',
     message,
     source(_answersSoFar: unknown, input: string = '') {
-      const inputString = input.toLowerCase();
-
-      const listItems = choices
-        // find items
-        .filter((item) => checkItem(item, inputString));
+      const listItems = filterChoices(input, choices);
 
       const list = log.mapToProjectList(listItems);
 
@@ -30,6 +26,22 @@ export const ask = async (message: string, choices: ProjectListItem[]) => {
 
   return prompt;
 };
+
+export function filterChoices(input: string, list: ProjectListItem[]): ProjectListItem[] {
+  const filteredList = list.filter((item) => checkItem(item, input));
+
+  const sortedList = filteredList.sort((a, b) => {
+    if (a.alias.includes(input)) {
+      return -1;
+    }
+    if (b.alias.includes(input)) {
+      return 1;
+    }
+    return 0;
+  });
+
+  return sortedList;
+}
 
 export function checkItem(item: ProjectListItem, filterString: string): boolean {
   const reg = new RegExp(
