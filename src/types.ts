@@ -20,4 +20,4 @@ export enum MessageCode {
 
 export const CONFIG_FILE_NAME = '.project-list.json';
 
-export type TMainArgs = 'ls' | 'add' | 'rm' | 'help';
+export type TMainArgs = 'ls' | 'add' | 'rm' | 'up' | 'update' | 'help';

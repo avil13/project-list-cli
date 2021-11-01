@@ -9,7 +9,7 @@ const getCenteredWidth = (str: string): string => {
   return str.padStart(lenLeft).padEnd(len);
 };
 
-const log = {
+export const log = {
   help(str: string) {
     const text = getCenteredWidth(str);
 
@@ -71,5 +71,3 @@ const log = {
     return str.split(delimiter)[1].trim();
   },
 };
-
-export {log};

@@ -1,10 +1,10 @@
-import { logMessages } from './lib/log/log-messages';
-import { addCommand } from './commands/add';
-import { lsCommand } from './commands/ls';
-import { rmCommand } from './commands/rm';
+import {
+  addCommand, lsCommand, rmCommand, updateCommand,
+} from './commands';
 import { checkAndGetConfig } from './lib/config-action/check-and-get-config';
 import { writeConfig } from './lib/config-action/write-config';
 import { log } from './lib/log/log';
+import { logMessages } from './lib/log/log-messages';
 import { TMainArgs } from './types';
 
 // Если нет глобального конфига, предлагаем создать
@@ -17,17 +17,24 @@ const main = async (arg: TMainArgs = 'ls') => {
   const conf = await checkAndGetConfig();
   const pwd = process.cwd();
 
-  if (arg === 'ls') {
-    await lsCommand(conf);
-  } else if (arg === 'rm') {
-    await rmCommand(conf, pwd);
-  } else if (arg === 'add') {
-    await addCommand(conf, pwd);
-  } else if (arg === 'help' || arg === '--help' || arg === '-h') {
-    log.fullHelp(logMessages.fullHelp[0], logMessages.fullHelp[1]);
-  } else {
-    log.help(logMessages.help);
-    return;
+  switch (true) {
+    case arg === 'ls':
+      await lsCommand(conf);
+      break;
+    case arg === 'rm':
+      await rmCommand(conf, pwd);
+      break;
+    case arg === 'add':
+      await addCommand(conf, pwd);
+      break;
+    case arg === 'update' || arg === 'up':
+      await updateCommand(conf);
+      break;
+    case arg === 'help':
+      log.fullHelp(logMessages.fullHelp[0], logMessages.fullHelp[1]);
+      break;
+    default:
+      return log.help(logMessages.help);
   }
 
   await writeConfig(conf);
