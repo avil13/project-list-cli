@@ -1,7 +1,7 @@
 {
   "name": "project-list-cli",
   "version": "1.2.0",
-  "description": "",
+  "description": "Quick navigation through projects",
   "main": "dist/index.js",
   "types": "dist",
   "license": "MIT",
