@@ -1,6 +1,6 @@
 {
   "name": "project-list-cli",
-  "version": "1.2.1",
+  "version": "1.3.1",
   "description": "Quick navigation through projects",
   "main": "dist/index.js",
   "types": "dist",
