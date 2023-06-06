@@ -1,12 +1,7 @@
 import chalk from 'chalk';
-import { homedir } from 'os';
 import { ProjectListItem } from '../../types';
 
 const delimiter = '|';
-
-const homeDir = homedir();
-
-const homePath = (path: string): string => path.replace(homeDir, '~');
 
 const getCenteredWidth = (str: string): string => {
   const len = 80;
@@ -69,7 +64,7 @@ export const log = {
       }
     });
 
-    return items.map((v) => `${v.alias.padEnd(maxAliasLen)}  ${delimiter} ${homePath(v.path)}`);
+    return items.map((v) => `${v.alias.padEnd(maxAliasLen)}  ${delimiter} ${v.path}`);
   },
 
   getFilteredPath(str: string): string {
