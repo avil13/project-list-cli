@@ -18,17 +18,15 @@ describe('readConfig', () => {
   it('read once', async () => {
     const conf = await readConfig('/some/path/to');
 
-    expect(conf).toEqual<ProjectListConfig>(
-      {
-        list: [{
+    expect(conf).toEqual<ProjectListConfig>({
+      list: [
+        {
           alias: 'item 1',
           path: '/path/to',
-        }],
-        rating: [
-          'item 1',
-        ],
-        lastProjectPath: '',
-      },
-    );
+        },
+      ],
+      rating: ['item 1'],
+      lastProjectPath: '',
+    });
   });
 });

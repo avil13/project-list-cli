@@ -10,13 +10,15 @@ describe('remove', () => {
 
   beforeEach(() => {
     conf = {
-      list: [{
-        alias: 'name 1',
-        path: '/path/to/dir1',
-      }, {
-        alias: 'name 2',
-        path: '/path/to/dir2',
-      },
+      list: [
+        {
+          alias: 'name 1',
+          path: '/path/to/dir1',
+        },
+        {
+          alias: 'name 2',
+          path: '/path/to/dir2',
+        },
       ],
       rating: [],
       lastProjectPath: '',

@@ -5,7 +5,6 @@ import { logMessages } from '../lib/log/log-messages';
 import { add } from '../lib/project-action/add';
 import { MessageCode, ProjectListConfig } from '../types';
 
-
 export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => {
   const pwd = process.cwd();
   const defaultAlias = path.basename(pwd);
@@ -13,7 +12,7 @@ export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => 
   const alias = await text({
     message: 'Input project alias:',
     // placeholder: defaultAlias,
-    defaultValue: defaultAlias
+    defaultValue: defaultAlias,
   });
 
   const msg = add(conf, {

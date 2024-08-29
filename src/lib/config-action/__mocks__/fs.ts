@@ -7,13 +7,13 @@ const emptyConfig: ProjectListConfig = {
 };
 
 const oneItemConfig: ProjectListConfig = {
-  list: [{
-    alias: 'item 1',
-    path: '/path/to',
-  }],
-  rating: [
-    'item 1',
+  list: [
+    {
+      alias: 'item 1',
+      path: '/path/to',
+    },
   ],
+  rating: ['item 1'],
   lastProjectPath: '',
 };
 
@@ -29,7 +29,7 @@ const fs = {
     cb(null);
   },
 
-  stat(_: string, cb: (e: null, arg0: { isFile: () => boolean; }) => void) {
+  stat(_: string, cb: (e: null, arg0: { isFile: () => boolean }) => void) {
     cb(null, { isFile: () => true });
   },
 };

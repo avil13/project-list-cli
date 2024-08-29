@@ -1,12 +1,11 @@
+export interface ProjectListItem {
+  alias: string;
+  path: string;
+}
 export interface ProjectListConfig {
   list: ProjectListItem[];
   rating: string[];
   lastProjectPath: string;
-}
-
-export interface ProjectListItem {
-  alias: string;
-  path: string;
 }
 
 export enum MessageCode {

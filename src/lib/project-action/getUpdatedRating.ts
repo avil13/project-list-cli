@@ -1,8 +1,8 @@
 import type { ProjectListConfig } from '@/types';
 
 export function getUpdatedRating(projectPath: string, conf: ProjectListConfig): string[] {
-  const projectItem = conf.list.find(item => {
-    return item.path === projectPath
+  const projectItem = conf.list.find((item) => {
+    return item.path === projectPath;
   });
 
   if (!projectItem) {
@@ -12,5 +12,5 @@ export function getUpdatedRating(projectPath: string, conf: ProjectListConfig): 
   const newList = [...conf.rating];
   newList.unshift(projectItem.alias);
 
-  return [...new Set(newList)]
+  return [...new Set(newList)];
 }

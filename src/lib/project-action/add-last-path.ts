@@ -11,6 +11,7 @@ export const addLastPath = (conf: ProjectListConfig, lastProjectPath: string): M
   // eslint-disable-next-line no-param-reassign
   conf.lastProjectPath = lastProjectPath;
 
+  // eslint-disable-next-line no-param-reassign
   conf.rating = getUpdatedRating(lastProjectPath, conf);
 
   return new Message('setted "lastProjectPath"', '', MessageCode.OK);

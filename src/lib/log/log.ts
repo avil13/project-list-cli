@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import chalk from 'chalk';
 import { ProjectListItem } from '../../types';
 
@@ -17,20 +18,17 @@ export const log = {
   },
 
   fullHelp(str: string, str2: string) {
-    const text = [
-      chalk.bgBlueBright.black(getCenteredWidth(str)),
-      chalk.bold.blue(str2),
-    ].filter(Boolean).join('\n');
+    const text = [chalk.bgBlueBright.black(getCenteredWidth(str)), chalk.bold.blue(str2)]
+      .filter(Boolean)
+      .join('\n');
 
     console.log(text);
   },
 
   info(str: string, str2?: string, str3?: string) {
-    const text = [
-      chalk.bold.green(str),
-      str2 && chalk.greenBright(str2),
-      str3 && chalk.green(str3),
-    ].filter(Boolean).join('\n');
+    const text = [chalk.bold.green(str), str2 && chalk.greenBright(str2), str3 && chalk.green(str3)]
+      .filter(Boolean)
+      .join('\n');
 
     console.log(text);
   },
@@ -40,17 +38,17 @@ export const log = {
       chalk.bold.yellow(str),
       str2 && chalk.yellowBright(str2),
       str3 && chalk.yellow(str3),
-    ].filter(Boolean).join('\n');
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     console.log(text);
   },
 
   error(str: string, str2?: string, str3?: string) {
-    const text = [
-      chalk.bold.red(str),
-      str2 && chalk.redBright(str2),
-      str3 && chalk.red(str3),
-    ].filter(Boolean).join('\n');
+    const text = [chalk.bold.red(str), str2 && chalk.redBright(str2), str3 && chalk.red(str3)]
+      .filter(Boolean)
+      .join('\n');
 
     console.log(text);
   },

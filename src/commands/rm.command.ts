@@ -9,11 +9,7 @@ export const rmCommand = async (conf: ProjectListConfig, aliasOrPath: string) =>
   if (msg.code === MessageCode.NOT_FOUND) {
     log.error(logMessages.errorNotFound, msg.message, msg.description);
   } else if (msg.code === MessageCode.REMOVED) {
-    log.info(
-      logMessages.infoProjectRemoved,
-      `alias: ${msg.message}`,
-      `path:  ${msg.description}`,
-    );
+    log.info(logMessages.infoProjectRemoved, `alias: ${msg.message}`, `path:  ${msg.description}`);
   }
 
   return msg;
