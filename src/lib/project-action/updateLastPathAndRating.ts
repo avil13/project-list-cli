@@ -14,8 +14,14 @@ export const updateLastPathAndRating = (
   // eslint-disable-next-line no-param-reassign
   conf.lastProjectPath = lastProjectPath;
 
+  const rating = getUpdatedRating(lastProjectPath, conf);
+
   // eslint-disable-next-line no-param-reassign
-  conf.rating = getUpdatedRating(lastProjectPath, conf);
+  conf.rating = rating.filter((ratingAlias) => {
+    return conf.list.some((li) => {
+      return li.alias === ratingAlias;
+    });
+  });
 
   return new Message('setted "lastProjectPath"', '', MessageCode.OK);
 };
