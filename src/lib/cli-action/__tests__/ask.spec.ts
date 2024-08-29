@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { ProjectListItem } from '../../../types';
 import { checkItem, filterChoices } from '../ask';
 

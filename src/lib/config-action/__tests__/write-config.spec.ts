@@ -1,7 +1,8 @@
 import { ProjectListConfig } from '../../../types';
 import { writeConfig } from '../write-config';
+import { vi, describe, it, expect } from 'vitest';
 
-jest.mock('fs');
+vi.mock('fs');
 
 describe('writeConfig', () => {
   it('write', async () => {

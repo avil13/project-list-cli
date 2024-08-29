@@ -1,6 +1,7 @@
 import { hasConfig } from '../has-config';
+import { vi, describe, it, expect } from 'vitest';
 
-jest.mock('fs');
+vi.mock('fs');
 
 describe('hasConfig', () => {
   it('hasConfig simple', async () => {

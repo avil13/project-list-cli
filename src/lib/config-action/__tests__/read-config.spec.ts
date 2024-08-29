@@ -1,7 +1,8 @@
 import { ProjectListConfig } from '../../../types';
 import { readConfig } from '../read-config';
+import { vi, describe, it, expect } from 'vitest';
 
-jest.mock('fs');
+vi.mock('fs');
 
 describe('readConfig', () => {
   it('read empty', async () => {

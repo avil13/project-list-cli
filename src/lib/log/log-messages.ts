@@ -13,6 +13,7 @@ const logMessages = {
     return `Config created in: "${filePath}"`;
   },
   emptyProjectList: 'You don\'t have any projects added right now.',
+  emptyProjectDir: 'Failed to get the project directory name.',
   addProject: 'To add a project. Go to the folder and run the command "pp add"',
   chooseProject: 'Choose project',
   upUpdated: 'These paths are not relevant and have been removed:',

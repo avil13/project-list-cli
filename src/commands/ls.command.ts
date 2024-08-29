@@ -4,16 +4,19 @@ import { addLastPath } from '../lib/project-action/add-last-path';
 import { ProjectListConfig } from '../types';
 import { log } from '../lib/log/log';
 
-export const lsCommand = async (conf: ProjectListConfig) => {
+export const lsCommand = async (conf: ProjectListConfig): Promise<void> => {
   if (conf.list.length === 0) {
     log.warning(logMessages.emptyProjectList);
     log.info(logMessages.addProject);
     return;
   }
 
-  const { item } = await ask(logMessages.chooseProject, conf.list);
+  const dir = await ask(logMessages.chooseProject, conf.list);
 
-  const dir = log.getFilteredPath(item);
+  if (!dir) {
+    log.error(logMessages.emptyProjectDir);
+    return;
+  }
 
   addLastPath(conf, dir);
 };

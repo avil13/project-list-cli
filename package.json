@@ -1,8 +1,11 @@
 {
   "name": "project-list-cli",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Quick navigation through projects",
   "main": "dist/index.js",
+  "exports": {
+    "default": "./dist/index.js"
+  },
   "types": "dist",
   "license": "MIT",
   "bin": {
@@ -10,26 +13,27 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
     "start": "npm run build && node dist/index.js",
-    "dev": "ts-node --project tsconfig.json src/index.ts",
+    "dev": "tsx --tsconfig ./tsconfig.json ./src/index.ts",
     "dev:watch": "nodemon",
     "lint:fix": "eslint --fix --ext .js,.ts .",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "type-check": "tsc -p . --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "rm -rf ./dist && tsc -p ./tsconfig.prod.json",
-    "prepublishOnly": "yarn build && yarn run create:shebang",
+    "prepublishOnly": "npm run build && npm run create:shebang",
     "create:shebang": "echo \"#!/usr/bin/env node\n\n$(cat dist/index.js)\" > dist/index.js"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && git update-index --again",
-      "pre-push": "yarn test",
-      "post-checkout": "yarn"
+      "pre-push": "npm test",
+      "post-checkout": "npm ci"
     }
   },
   "lint-staged": {
@@ -37,32 +41,20 @@
       "eslint --fix --ext .js,.ts"
     ]
   },
-  "dependencies": {
-    "chalk": "^4.1.0",
-    "inquirer": "^8.0.0",
-    "inquirer-autocomplete-prompt": "^1.3.0"
-  },
-  "devDependencies": {
-    "@babel/core": "7",
-    "@types/inquirer": "^7.3.1",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.33",
-    "@typescript-eslint/eslint-plugin": "^4.17.0",
-    "babel-jest": "^26.6.3",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.21.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-plugin-import": "^2.22.1",
-    "husky": "^4",
-    "jest": "^26.6.3",
-    "lint-staged": "^10.5.4",
-    "nodemon": "^2.0.7",
-    "ts-jest": "^26.5.3",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/avil13/project-list-cli"
+  },
+  "devDependencies": {
+    "@avil13/eslint-config": "^1.0.4",
+    "@clack/prompts": "^0.7.0",
+    "@types/node": "^22.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "lint-staged": "^15.2.9",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vitest": "^2.0.5"
   }
 }

@@ -66,8 +66,4 @@ export const log = {
 
     return items.map((v) => `${v.alias.padEnd(maxAliasLen)}  ${delimiter} ${v.path}`);
   },
-
-  getFilteredPath(str: string): string {
-    return str.split(delimiter)[1].trim();
-  },
 };
