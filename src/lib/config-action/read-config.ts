@@ -1,9 +1,6 @@
-import fs from 'fs';
-import { promisify } from 'util';
+import { readFile } from 'fs/promises';
 import { ProjectListConfig } from '../../types';
 import { getConfigPath } from './get-config-path';
-
-const fsReadFilePromises = promisify(fs.readFile);
 
 export const readConfig = async (pathToConfig?: string): Promise<ProjectListConfig> => {
   if (!pathToConfig) {
@@ -11,6 +8,6 @@ export const readConfig = async (pathToConfig?: string): Promise<ProjectListConf
     pathToConfig = getConfigPath();
   }
 
-  const confString = await fsReadFilePromises(pathToConfig, 'utf8');
+  const confString = await readFile(pathToConfig, 'utf8');
   return JSON.parse(confString);
 };
