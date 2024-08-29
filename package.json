@@ -1,12 +1,16 @@
 {
   "name": "project-list-cli",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Quick navigation through projects",
-  "main": "dist/index.js",
+  "type": "module",
   "exports": {
-    "default": "./dist/index.js"
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
-  "types": "dist",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "bin": {
     "project-list": "dist/index.js"
@@ -25,9 +29,12 @@
     "test:watch": "vitest",
     "type-check": "tsc -p . --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "rm -rf ./dist && tsc -p ./tsconfig.prod.json",
+    "build": "unbuild",
     "prepublishOnly": "npm run build && npm run create:shebang",
     "create:shebang": "echo \"#!/usr/bin/env node\n\n$(cat dist/index.js)\" > dist/index.js"
+  },
+  "unbuild": {
+    "failOnWarn": false
   },
   "husky": {
     "hooks": {
@@ -47,6 +54,7 @@
   },
   "devDependencies": {
     "@avil13/eslint-config": "^1.0.7",
+    "@clack/core": "^0.3.4",
     "@clack/prompts": "^0.7.0",
     "@types/node": "^22.5.1",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
@@ -58,6 +66,7 @@
     "tsx": "^4.19.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.3.0",
+    "unbuild": "^2.0.0",
     "vite": "^5.4.2",
     "vitest": "^2.0.5"
   }
