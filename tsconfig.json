@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "lib": ["ES2022"],
-    "module": "ESNext",
-    "target": "ES2019",
-    "moduleResolution": "Bundler",
+    "module": "UMD",
+    "target": "ES2022",
+    "moduleResolution": "Node",
     /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
