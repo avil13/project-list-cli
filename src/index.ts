@@ -40,9 +40,7 @@ const main = async (arg: TMainArgs = 'ls') => {
 
 export { main };
 
-const isMainProcess = require.main === module;
-
-if (isMainProcess) {
+(function run() {
   const [arg] = process.argv.slice(2);
 
   main(arg as TMainArgs).catch((err) => {
@@ -50,4 +48,4 @@ if (isMainProcess) {
     console.error(err);
     process.exit(1);
   });
-}
+})();

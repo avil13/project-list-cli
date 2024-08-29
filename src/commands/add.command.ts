@@ -11,7 +11,7 @@ export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => 
 
   const alias = await text({
     message: 'Input project alias:',
-    // placeholder: defaultAlias,
+    placeholder: defaultAlias,
     defaultValue: defaultAlias,
   });
 

@@ -1,6 +1,7 @@
-import fs from 'fs';
-import { promisify } from 'util';
+import { access } from 'fs/promises';
 
-const exists = promisify(fs.exists);
-
-export const isExist = async (pathToFolder: string): Promise<boolean> => exists(pathToFolder);
+export const isExist = async (pathToFolder: string): Promise<boolean> => {
+  return access(pathToFolder)
+    .then(() => true)
+    .catch(() => false);
+};

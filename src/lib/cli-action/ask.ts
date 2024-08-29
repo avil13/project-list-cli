@@ -1,10 +1,12 @@
 import type { ProjectListItem } from '../../types';
 
-import { select } from '@clack/prompts';
+import { intro, select } from '@clack/prompts';
 
 export const ask = async (message: string, choices: ProjectListItem[]): Promise<string | null> => {
   // eslint-disable-next-line no-use-before-define
   const options = toOptions(choices);
+
+  intro('Select a saved folder');
 
   const projectPath = await select({
     message,

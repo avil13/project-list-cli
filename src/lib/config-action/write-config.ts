@@ -10,7 +10,5 @@ export const writeConfig = async (config: ProjectListConfig, pathToConfig?: stri
 
   const configString = JSON.stringify(config, null, 2);
 
-  return writeFile(pathToConfig, configString)
-    .then(() => true)
-    .catch(() => false);
+  await writeFile(pathToConfig, configString);
 };

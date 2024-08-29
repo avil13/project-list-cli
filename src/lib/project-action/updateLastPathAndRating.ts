@@ -3,7 +3,10 @@ import { getUpdatedRating } from './getUpdatedRating';
 
 import { Message } from './message';
 
-export const addLastPath = (conf: ProjectListConfig, lastProjectPath: string): Message => {
+export const updateLastPathAndRating = (
+  conf: ProjectListConfig,
+  lastProjectPath: string,
+): Message => {
   if (!lastProjectPath) {
     return new Message('wrong "lastProjectPath"', '', MessageCode.WRONG_LAST_PATH);
   }
