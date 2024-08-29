@@ -11,6 +11,7 @@ export const ask = async (message: string, choices: ProjectListItem[]): Promise<
   const projectPath = await select({
     message,
     options,
+    maxItems: 8,
   });
 
   return (typeof projectPath === 'string' && projectPath) || null;

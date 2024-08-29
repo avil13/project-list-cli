@@ -15,8 +15,12 @@ export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => 
     defaultValue: defaultAlias,
   });
 
+  if (typeof alias !== 'string') {
+    return;
+  }
+
   const msg = add(conf, {
-    alias: alias.toString(),
+    alias,
     path: pathToDir,
   });
 
