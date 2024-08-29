@@ -1,6 +1,6 @@
 {
   "name": "project-list-cli",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Quick navigation through projects",
   "type": "module",
   "exports": {
@@ -13,7 +13,7 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "bin": {
-    "project-list": "dist/index.mjs"
+    "project-list": "dist/index.cjs"
   },
   "files": [
     "dist",
