@@ -1,8 +1,7 @@
-import fs from 'fs';
-import { promisify } from 'util';
+import { stat } from 'fs/promises';
 import { getConfigPath } from './get-config-path';
 
-const fsStatPromises = promisify(fs.stat);
+const fsStatPromises = stat;
 
 export const hasConfig = async (pathToConfig?: string): Promise<boolean> => {
   if (!pathToConfig) {

@@ -23,9 +23,5 @@ export const add = (conf: ProjectListConfig, item: ProjectListItem): Message => 
   list.push(item);
   rating.push(item.alias);
 
-  return new Message(
-    `project alias: "${item.alias}"`,
-    item.path,
-    MessageCode.OK,
-  );
+  return new Message(`project alias: "${item.alias}"`, item.path, MessageCode.OK);
 };

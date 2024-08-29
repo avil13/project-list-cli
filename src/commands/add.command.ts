@@ -1,4 +1,4 @@
-import inquirer from 'inquirer';
+import { text } from '@clack/prompts';
 import path from 'path';
 import { log } from '../lib/log/log';
 import { logMessages } from '../lib/log/log-messages';
@@ -9,15 +9,14 @@ export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => 
   const pwd = process.cwd();
   const defaultAlias = path.basename(pwd);
 
-  const { alias } = await inquirer.prompt({
-    type: 'input',
-    name: 'alias',
+  const alias = await text({
     message: 'Input project alias:',
-    default: defaultAlias,
+    placeholder: defaultAlias,
+    defaultValue: defaultAlias,
   });
 
   const msg = add(conf, {
-    alias,
+    alias: alias.toString(),
     path: pathToDir,
   });
 

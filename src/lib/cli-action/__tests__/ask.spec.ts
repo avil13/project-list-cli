@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { ProjectListItem } from '../../../types';
 import { checkItem, filterChoices } from '../ask';
 
@@ -11,35 +12,41 @@ describe('ask filter', () => {
     [['code-src', '/code/src/project'], 'src/proje', true],
     [['code-src', '/code/src/project'], 'c/s/p', false],
     [['code-src', '/code/src/project'], 'CSsrC', false],
-  ])(
-    'checkItem(%s, %s):%s',
-    ([alias, path], filterStr, expected) => {
-      const res = checkItem({
+  ])('checkItem(%s, %s):%s', ([alias, path], filterStr, expected) => {
+    const res = checkItem(
+      {
         alias,
         path,
-      }, filterStr);
+      },
+      filterStr,
+    );
 
-      expect(res).toBe(expected);
-    },
-  );
+    expect(res).toBe(expected);
+  });
 
   it.only.each<[string, ProjectListItem[], ProjectListItem[]]>([
     [
       'pro',
-      [{ alias: 'parom', path: '' }, { alias: 'project', path: '' }],
-      [{ alias: 'project', path: '' }, { alias: 'parom', path: '' }],
+      [
+        { alias: 'parom', path: '' },
+        { alias: 'project', path: '' },
+      ],
+      [
+        { alias: 'project', path: '' },
+        { alias: 'parom', path: '' },
+      ],
     ],
     [
       'pj',
-      [{ alias: 'parom', path: '' }, { alias: 'project', path: '' }],
+      [
+        { alias: 'parom', path: '' },
+        { alias: 'project', path: '' },
+      ],
       [{ alias: 'project', path: '' }],
     ],
-  ])(
-    'filterChoices("%s")',
-    (input, list, expected) => {
-      const res = filterChoices(input, list);
+  ])('filterChoices("%s")', (input, list, expected) => {
+    const res = filterChoices(input, list);
 
-      expect(res).toEqual(expected);
-    },
-  );
+    expect(res).toEqual(expected);
+  });
 });

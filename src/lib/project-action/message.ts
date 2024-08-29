@@ -5,5 +5,7 @@ export class Message {
     public readonly message: string,
     public readonly description: string = '',
     public readonly code: MessageCode = MessageCode.OK,
-  ) {}
+  ) {
+    //
+  }
 }

@@ -1,6 +1,8 @@
 import { MessageCode, ProjectListConfig, ProjectListItem } from '../../../types';
-import { add } from '../add';
+import { beforeEach, describe, expect, it } from 'vitest';
+
 import { Message } from '../message';
+import { add } from '../add';
 
 describe('add command', () => {
   let conf: ProjectListConfig = {

@@ -1,19 +1,22 @@
 import { ask } from '../lib/cli-action/ask';
-import { logMessages } from '../lib/log/log-messages';
-import { addLastPath } from '../lib/project-action/add-last-path';
-import { ProjectListConfig } from '../types';
 import { log } from '../lib/log/log';
+import { logMessages } from '../lib/log/log-messages';
+import { updateLastPathAndRating } from '../lib/project-action/updateLastPathAndRating';
+import { ProjectListConfig } from '../types';
 
-export const lsCommand = async (conf: ProjectListConfig) => {
+export const lsCommand = async (conf: ProjectListConfig): Promise<void> => {
   if (conf.list.length === 0) {
     log.warning(logMessages.emptyProjectList);
     log.info(logMessages.addProject);
     return;
   }
 
-  const { item } = await ask(logMessages.chooseProject, conf.list);
+  const dir = await ask(logMessages.chooseProject, conf.list);
 
-  const dir = log.getFilteredPath(item);
+  if (!dir) {
+    log.error(logMessages.emptyProjectDir);
+    return;
+  }
 
-  addLastPath(conf, dir);
+  updateLastPathAndRating(conf, dir);
 };

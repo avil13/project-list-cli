@@ -1,6 +1,4 @@
-import {
-  addCommand, lsCommand, rmCommand, updateCommand,
-} from './commands';
+import { addCommand, lsCommand, rmCommand, updateCommand } from './commands';
 import { checkAndGetConfig } from './lib/config-action/check-and-get-config';
 import { writeConfig } from './lib/config-action/write-config';
 import { log } from './lib/log/log';
@@ -37,19 +35,17 @@ const main = async (arg: TMainArgs = 'ls') => {
       return log.help(logMessages.help);
   }
 
-  await writeConfig(conf);
+  return writeConfig(conf);
 };
 
 export { main };
 
-const isMainProcess = require.main === module;
-
-if (isMainProcess) {
+(function run() {
   const [arg] = process.argv.slice(2);
 
-  main(arg as TMainArgs)
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
-    });
-}
+  main(arg as TMainArgs).catch((err) => {
+    // eslint-disable-next-line no-console
+    console.error(err);
+    process.exit(1);
+  });
+})();

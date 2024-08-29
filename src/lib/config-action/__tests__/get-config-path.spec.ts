@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { CONFIG_FILE_NAME } from '../../../types';
 import { getConfigPath } from '../get-config-path';
 

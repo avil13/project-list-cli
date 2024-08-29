@@ -1,33 +1,34 @@
-import inquirer from 'inquirer';
-// @ts-ignore
-import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt';
-import { ProjectListItem } from '../../types';
-import { log } from '../log/log';
+import type { ProjectListItem } from '../../types';
 
-inquirer.registerPrompt(
-  'autocomplete',
-  inquirerAutocompletePrompt,
-);
+import { intro, select } from '@clack/prompts';
 
-export const ask = async (message: string, choices: ProjectListItem[]) => {
-  const prompt = await inquirer.prompt({
-    // @ts-ignore
-    type: 'autocomplete',
-    name: 'item',
+export const ask = async (message: string, choices: ProjectListItem[]): Promise<string | null> => {
+  // eslint-disable-next-line no-use-before-define
+  const options = toOptions(choices);
+
+  intro('Select a saved folder');
+
+  const projectPath = await select({
     message,
-    source(_answersSoFar: unknown, input: string = '') {
-      const listItems = filterChoices(input, choices);
-
-      const list = log.mapToProjectList(listItems);
-
-      return Promise.resolve(list);
-    },
+    options,
   });
 
-  return prompt;
+  return (typeof projectPath === 'string' && projectPath) || null;
 };
 
+function toOptions(list: ProjectListItem[]) {
+  return list.map((item) => {
+    return {
+      value: item.path,
+      label: item.alias,
+    };
+  });
+}
+
+// LEGACY
+
 export function filterChoices(input: string, list: ProjectListItem[]): ProjectListItem[] {
+  // eslint-disable-next-line no-use-before-define
   const filteredList = list.filter((item) => checkItem(item, input));
 
   const sortedList = filteredList.sort((a, b) => {
@@ -44,10 +45,7 @@ export function filterChoices(input: string, list: ProjectListItem[]): ProjectLi
 }
 
 export function checkItem(item: ProjectListItem, filterString: string): boolean {
-  const reg = new RegExp(
-    filterString.split('').join('.*'),
-    'gi',
-  );
+  const reg = new RegExp(filterString.split('').join('.*'), 'gi');
 
   return reg.test(item.alias) || item.path.includes(filterString);
 }

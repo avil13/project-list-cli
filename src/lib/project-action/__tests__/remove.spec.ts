@@ -1,4 +1,6 @@
 import { MessageCode, ProjectListConfig } from '../../../types';
+import { beforeEach, describe, expect, it } from 'vitest';
+
 import { remove } from '../remove';
 
 describe('remove', () => {
@@ -10,13 +12,15 @@ describe('remove', () => {
 
   beforeEach(() => {
     conf = {
-      list: [{
-        alias: 'name 1',
-        path: '/path/to/dir1',
-      }, {
-        alias: 'name 2',
-        path: '/path/to/dir2',
-      },
+      list: [
+        {
+          alias: 'name 1',
+          path: '/path/to/dir1',
+        },
+        {
+          alias: 'name 2',
+          path: '/path/to/dir2',
+        },
       ],
       rating: [],
       lastProjectPath: '',

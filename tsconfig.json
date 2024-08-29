@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["ES2019"],
-    "module": "commonjs",
+    "lib": ["ES2022"],
+    "module": "ESNext",
     "target": "ES2019",
+    "moduleResolution": "Bundler",
     /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
@@ -46,10 +47,8 @@
       ]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
-    // "typeRoots": [],                       /* List of folders to include type definitions from. */
     "types": [
       "node",
-      "jest"
     ],
     /* Type declaration files to be included in compilation. */
     "allowSyntheticDefaultImports": true,
