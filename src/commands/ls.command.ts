@@ -11,6 +11,24 @@ export const lsCommand = async (conf: ProjectListConfig): Promise<void> => {
     return;
   }
 
+  // Sort the list based on the rating
+  conf.list.sort((a, b) => {
+    const ratingA = conf.rating.indexOf(a.alias);
+    const ratingB = conf.rating.indexOf(b.alias);
+
+    // If both items are in the rating, sort by their position
+    if (ratingA !== -1 && ratingB !== -1) {
+      return ratingA - ratingB;
+    }
+
+    // If only one item is in the rating, prioritize it
+    if (ratingA !== -1) return -1;
+    if (ratingB !== -1) return 1;
+
+    // If neither item is in the rating, maintain their original order
+    return 0;
+  });
+
   const dir = await ask(logMessages.chooseProject, conf.list);
 
   if (!dir) {
