@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ProjectListItem } from '../../../types';
+import type { ProjectListItem } from '../../../types';
 import { checkItem, filterChoices } from '../ask';
 
 describe('ask filter', () => {

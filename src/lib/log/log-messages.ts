@@ -9,7 +9,7 @@ const logMessages = {
   up  - update the list of paths, delete broken paths
 `,
   ],
-  configCreated(filePath: string = '') {
+  configCreated(filePath = '') {
     return `Config created in: "${filePath}"`;
   },
   emptyProjectList: "You don't have any projects added right now.",

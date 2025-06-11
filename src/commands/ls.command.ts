@@ -2,7 +2,7 @@ import { ask } from '../lib/cli-action/ask';
 import { log } from '../lib/log/log';
 import { logMessages } from '../lib/log/log-messages';
 import { updateLastPathAndRating } from '../lib/project-action/updateLastPathAndRating';
-import { ProjectListConfig } from '../types';
+import type { ProjectListConfig } from '../types';
 
 export const lsCommand = async (conf: ProjectListConfig): Promise<void> => {
   if (conf.list.length === 0) {
@@ -22,8 +22,12 @@ export const lsCommand = async (conf: ProjectListConfig): Promise<void> => {
     }
 
     // If only one item is in the rating, prioritize it
-    if (ratingA !== -1) return -1;
-    if (ratingB !== -1) return 1;
+    if (ratingA !== -1) {
+      return -1;
+    }
+    if (ratingB !== -1) {
+      return 1;
+    }
 
     // If neither item is in the rating, maintain their original order
     return 0;

@@ -1,18 +1,17 @@
-import { text } from '@clack/prompts';
-import path from 'path';
+import { input } from '@inquirer/prompts';
+import path from 'node:path';
 import { log } from '../lib/log/log';
 import { logMessages } from '../lib/log/log-messages';
 import { add } from '../lib/project-action/add';
-import { MessageCode, ProjectListConfig } from '../types';
+import { MessageCode, type ProjectListConfig } from '../types';
 
 export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => {
   const pwd = process.cwd();
   const defaultAlias = path.basename(pwd);
 
-  const alias = await text({
+  const alias = await input({
     message: 'Input project alias:',
-    placeholder: defaultAlias,
-    defaultValue: defaultAlias,
+    default: defaultAlias,
   });
 
   if (typeof alias !== 'string') {

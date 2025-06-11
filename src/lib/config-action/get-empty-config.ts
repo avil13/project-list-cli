@@ -1,4 +1,4 @@
-import { ProjectListConfig } from '../../types';
+import type { ProjectListConfig } from '../../types';
 
 export const getEmptyConfig = (): ProjectListConfig => ({
   list: [],

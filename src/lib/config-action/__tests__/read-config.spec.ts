@@ -1,4 +1,4 @@
-import { ProjectListConfig } from '../../../types';
+import type { ProjectListConfig } from '../../../types';
 import { readConfig } from '../read-config';
 import { vi, describe, it, expect } from 'vitest';
 
