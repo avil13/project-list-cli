@@ -1,33 +1,33 @@
 import type { ProjectListItem } from '../../types';
 
-import { intro, isCancel, select } from '@clack/prompts';
+import { search } from '@inquirer/prompts';
 
 export const ask = async (message: string, choices: ProjectListItem[]): Promise<string | null> => {
-  // eslint-disable-next-line no-use-before-define
-  const options = toOptions(choices);
-
-  intro('Select a saved folder');
-
-  const projectPath = await select({
-    message,
-    options,
-    maxItems: 8,
-  });
-
-  if (isCancel(projectPath)) {
+  const promptChoices = toChoices(choices);
+  try {
+    const projectPath = await search({
+      message,
+      pageSize: 8,
+      source: async (input: string | undefined) => {
+        if (!input) return promptChoices;
+        const lower = input.toLowerCase();
+        return promptChoices.filter(
+          (c) => c.name.toLowerCase().includes(lower) || c.value.toLowerCase().includes(lower)
+        );
+      },
+    });
+    return (typeof projectPath === 'string' && projectPath) || null;
+  } catch (e) {
+    // User cancelled (ctrl+c)
     return null;
   }
-
-  return (typeof projectPath === 'string' && projectPath) || null;
 };
 
-function toOptions(list: ProjectListItem[]) {
-  return list.map((item) => {
-    return {
-      value: item.path,
-      label: item.alias,
-    };
-  });
+function toChoices(list: ProjectListItem[]) {
+  return list.map((item) => ({
+    value: item.path,
+    name: item.alias,
+  }));
 }
 
 // LEGACY
