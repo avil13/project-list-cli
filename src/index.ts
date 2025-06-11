@@ -3,7 +3,7 @@ import { checkAndGetConfig } from './lib/config-action/check-and-get-config';
 import { writeConfig } from './lib/config-action/write-config';
 import { log } from './lib/log/log';
 import { logMessages } from './lib/log/log-messages';
-import { TMainArgs } from './types';
+import type { TMainArgs } from './types';
 
 // Если нет глобального конфига, предлагаем создать
 //

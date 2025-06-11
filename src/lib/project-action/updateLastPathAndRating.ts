@@ -1,4 +1,4 @@
-import { MessageCode, ProjectListConfig } from '../../types';
+import { MessageCode, type ProjectListConfig } from '../../types';
 import { getUpdatedRating } from './getUpdatedRating';
 
 import { Message } from './message';

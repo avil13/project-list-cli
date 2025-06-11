@@ -1,9 +1,9 @@
 import { text } from '@clack/prompts';
-import path from 'path';
+import path from 'node:path';
 import { log } from '../lib/log/log';
 import { logMessages } from '../lib/log/log-messages';
 import { add } from '../lib/project-action/add';
-import { MessageCode, ProjectListConfig } from '../types';
+import { MessageCode, type ProjectListConfig } from '../types';
 
 export const addCommand = async (conf: ProjectListConfig, pathToDir: string) => {
   const pwd = process.cwd();

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import chalk from 'chalk';
-import { ProjectListItem } from '../../types';
+import type { ProjectListItem } from '../../types';
 
 const delimiter = '|';
 

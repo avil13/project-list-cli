@@ -1,4 +1,4 @@
-import { stat } from 'fs/promises';
+import { stat } from 'node:fs/promises';
 import { getConfigPath } from './get-config-path';
 
 const fsStatPromises = stat;
@@ -6,6 +6,7 @@ const fsStatPromises = stat;
 export const hasConfig = async (pathToConfig?: string): Promise<boolean> => {
   if (!pathToConfig) {
     // eslint-disable-next-line no-param-reassign
+    // biome-ignore lint/style/noParameterAssign:
     pathToConfig = getConfigPath();
   }
 

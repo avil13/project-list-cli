@@ -9,12 +9,12 @@ export interface ProjectListConfig {
 }
 
 export enum MessageCode {
-  OK,
-  ALREADY_EXISTS_ALIAS,
-  ALREADY_EXISTS_PATH,
-  NOT_FOUND,
-  REMOVED,
-  WRONG_LAST_PATH,
+  OK = 0,
+  ALREADY_EXISTS_ALIAS = 1,
+  ALREADY_EXISTS_PATH = 2,
+  NOT_FOUND = 3,
+  REMOVED = 4,
+  WRONG_LAST_PATH = 5,
 }
 
 export const CONFIG_FILE_NAME = '.project-list.json';

@@ -1,10 +1,10 @@
-import { readFile } from 'fs/promises';
-import { ProjectListConfig } from '../../types';
+import { readFile } from 'node:fs/promises';
+import type { ProjectListConfig } from '../../types';
 import { getConfigPath } from './get-config-path';
 
 export const readConfig = async (pathToConfig?: string): Promise<ProjectListConfig> => {
   if (!pathToConfig) {
-    // eslint-disable-next-line no-param-reassign
+    // biome-ignore lint/style/noParameterAssign:
     pathToConfig = getConfigPath();
   }
 

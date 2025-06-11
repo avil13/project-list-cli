@@ -1,7 +1,7 @@
 import { logMessages } from '../lib/log/log-messages';
 import { log } from '../lib/log/log';
 import { remove } from '../lib/project-action/remove';
-import { MessageCode, ProjectListConfig } from '../types';
+import { MessageCode, type ProjectListConfig } from '../types';
 
 export const rmCommand = async (conf: ProjectListConfig, aliasOrPath: string) => {
   const msg = remove(conf, aliasOrPath);

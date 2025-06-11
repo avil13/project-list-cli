@@ -1,4 +1,4 @@
-import { MessageCode, ProjectListConfig, ProjectListItem } from '../../../types';
+import { MessageCode, type ProjectListConfig, type ProjectListItem } from '../../../types';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { Message } from '../message';

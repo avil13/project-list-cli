@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { isExist } from '../utils/is-exist';
-import { ProjectListConfig } from '../../types';
+import type { ProjectListConfig } from '../../types';
 
 export const update = async (conf: ProjectListConfig): Promise<{ clearedPaths: string[] }> => {
   const { list } = conf;

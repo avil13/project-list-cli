@@ -1,4 +1,4 @@
-import { ProjectListConfig } from '@/types';
+import type { ProjectListConfig } from '@/types';
 import { log } from '../log/log';
 import { logMessages } from '../log/log-messages';
 import { getConfigPath } from './get-config-path';

@@ -1,7 +1,7 @@
 import { log } from '../lib/log/log';
 import { logMessages } from '../lib/log/log-messages';
 import { update } from '../lib/project-action/update';
-import { ProjectListConfig } from '../types';
+import type { ProjectListConfig } from '../types';
 
 export const updateCommand = async (conf: ProjectListConfig) => {
   const { clearedPaths } = await update(conf);
