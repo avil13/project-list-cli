@@ -1,6 +1,6 @@
 import type { ProjectListItem } from '../../types';
 
-import { intro, select } from '@clack/prompts';
+import { intro, isCancel, select } from '@clack/prompts';
 
 export const ask = async (message: string, choices: ProjectListItem[]): Promise<string | null> => {
   // eslint-disable-next-line no-use-before-define
@@ -13,6 +13,10 @@ export const ask = async (message: string, choices: ProjectListItem[]): Promise<
     options,
     maxItems: 8,
   });
+
+  if (isCancel(projectPath)) {
+    return null;
+  }
 
   return (typeof projectPath === 'string' && projectPath) || null;
 };
