@@ -1,6 +1,6 @@
 {
   "name": "project-list-cli",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Quick navigation through projects",
   "type": "module",
   "exports": {
