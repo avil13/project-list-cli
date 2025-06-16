@@ -1,11 +1,11 @@
 {
   "name": "project-list-cli",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Quick navigation through projects",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
   },
