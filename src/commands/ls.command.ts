@@ -1,3 +1,4 @@
+import { getTransformedListNames } from '@/lib/utils/getTransformedListNames';
 import { ask } from '../lib/cli-action/ask';
 import { log } from '../lib/log/log';
 import { logMessages } from '../lib/log/log-messages';
@@ -32,6 +33,9 @@ export const lsCommand = async (conf: ProjectListConfig): Promise<void> => {
     // If neither item is in the rating, maintain their original order
     return 0;
   });
+
+  // Adding branch name to dir
+  conf.list = await getTransformedListNames(conf.list);
 
   const dir = await ask(logMessages.chooseProject, conf.list);
 
