@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { addCommand, lsCommand, rmCommand, updateCommand } from './commands';
 import { checkAndGetConfig } from './lib/config-action/check-and-get-config';
 import { writeConfig } from './lib/config-action/write-config';
