@@ -24,7 +24,7 @@ describe('ask filter', () => {
     expect(res).toBe(expected);
   });
 
-  it.only.each<[string, ProjectListItem[], ProjectListItem[]]>([
+  it.each<[string, ProjectListItem[], ProjectListItem[]]>([
     [
       'pro',
       [

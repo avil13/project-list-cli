@@ -1,6 +1,7 @@
 import type { ProjectListItem } from '../../types';
 
 import { search } from '@inquirer/prompts';
+import { clc } from '../utils/color';
 
 export const ask = async (message: string, choices: ProjectListItem[]): Promise<string | null> => {
   const promptChoices = toChoices(choices);
@@ -12,7 +13,7 @@ export const ask = async (message: string, choices: ProjectListItem[]): Promise<
         if (!input) return promptChoices;
         const lower = input.toLowerCase();
         return promptChoices.filter(
-          (c) => c.name.toLowerCase().includes(lower) || c.value.toLowerCase().includes(lower)
+          (c) => c.alias.toLowerCase().includes(lower) || c.value.toLowerCase().includes(lower),
         );
       },
     });
@@ -24,9 +25,19 @@ export const ask = async (message: string, choices: ProjectListItem[]): Promise<
 };
 
 function toChoices(list: ProjectListItem[]) {
+  const maxAliasLength = list.reduce((max, item) => Math.max(max, item.alias.length), 0);
+
+  const toName = (item: ProjectListItem): string => {
+    if (!item.branch) {
+      return item.alias;
+    }
+    return item.alias + ' '.repeat(maxAliasLength - item.alias.length + 2) + clc.green(item.branch);
+  };
+
   return list.map((item) => ({
     value: item.path,
-    name: item.alias,
+    alias: item.alias,
+    name: toName(item),
   }));
 }
 

@@ -1,6 +1,7 @@
 export interface ProjectListItem {
   alias: string;
   path: string;
+  branch?: string;
 }
 export interface ProjectListConfig {
   list: ProjectListItem[];
