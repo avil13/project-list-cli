@@ -2,13 +2,15 @@ import { execSync } from 'child_process';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
-type BranchResult = {
-  success: true;
-  branchName: string;
-} | {
-    success: false;
-    error: string;
-}
+type BranchResult =
+  | {
+      success: true;
+      branchName: string;
+    }
+  | {
+      success: false;
+      error: string;
+    };
 
 /**
  * Gets the current git branch name for a given folder path
@@ -21,7 +23,7 @@ export async function getBranchName(folderPath: string): Promise<BranchResult> {
     if (!existsSync(folderPath)) {
       return {
         success: false,
-        error: 'Folder does not exist'
+        error: 'Folder does not exist',
       };
     }
 
@@ -30,7 +32,7 @@ export async function getBranchName(folderPath: string): Promise<BranchResult> {
     if (!existsSync(gitPath)) {
       return {
         success: false,
-        error: 'Not a git repository (no .git folder found)'
+        error: 'Not a git repository (no .git folder found)',
       };
     }
 
@@ -38,12 +40,12 @@ export async function getBranchName(folderPath: string): Promise<BranchResult> {
     try {
       execSync('git --version', {
         stdio: 'pipe',
-        timeout: 5000 // 5 second timeout
+        timeout: 5000, // 5 second timeout
       });
     } catch (gitCheckError) {
       return {
         success: false,
-        error: 'Git is not installed or not available in PATH'
+        error: 'Git is not installed or not available in PATH',
       };
     }
 
@@ -53,12 +55,12 @@ export async function getBranchName(folderPath: string): Promise<BranchResult> {
         cwd: folderPath,
         encoding: 'utf8',
         stdio: 'pipe',
-        timeout: 10000 // 10 second timeout
+        timeout: 10000, // 10 second timeout
       }).trim();
 
       return {
         success: true,
-        branchName: branchName
+        branchName: branchName,
       };
     } catch (gitBranchError) {
       // If the above fails, try alternative method
@@ -67,31 +69,30 @@ export async function getBranchName(folderPath: string): Promise<BranchResult> {
           cwd: folderPath,
           encoding: 'utf8',
           stdio: 'pipe',
-          timeout: 10000
+          timeout: 10000,
         }).trim();
 
         return {
           success: true,
-          branchName: branchName
+          branchName: branchName,
         };
       } catch (altError) {
         return {
           success: false,
-          error: `Failed to get branch name: ${gitBranchError}`
+          error: `Failed to get branch name: ${gitBranchError}`,
         };
       }
     }
-
   } catch (error) {
     return {
       success: false,
-      error: `Unexpected error: ${error}`
+      error: `Unexpected error: ${error}`,
     };
   }
 }
 
 // Example usage:
-// /*
+/*
 // Sync version
 (async () => {
   const syncResult = await getBranchName('./src');
