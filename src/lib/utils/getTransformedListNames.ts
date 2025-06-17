@@ -12,7 +12,7 @@ export async function getTransformedListNames(
     i += 1;
     branch = '';
 
-    if (i <= 3) {
+    if (i <= 5) {
       const branchState = await getBranchName(item.path);
       if (branchState.success) {
         branch = branchState.branchName;
