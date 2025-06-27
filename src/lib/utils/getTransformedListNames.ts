@@ -7,12 +7,13 @@ export async function getTransformedListNames(
   const result: ProjectListItem[] = [];
   let i = 0;
   let branch = '';
+  const countItemsWithBranch = 10;
 
   for (const item of items) {
     i += 1;
     branch = '';
 
-    if (i <= 5) {
+    if (i <= countItemsWithBranch) {
       const branchState = await getBranchName(item.path);
       if (branchState.success) {
         branch = branchState.branchName;
