@@ -1,6 +1,6 @@
 {
   "name": "project-list-cli",
-  "version": "1.6.9",
+  "version": "1.6.10",
   "description": "Quick navigation through projects",
   "type": "module",
   "exports": {
@@ -54,6 +54,7 @@
     "@biomejs/biome": "1.9.4",
     "@inquirer/prompts": "^7.5.3",
     "@types/node": "^24.0.3",
+    "act-master": "^2.7.4",
     "lint-staged": "^16.1.2",
     "tsdown": "^0.12.7",
     "tsx": "^4.20.3",
