@@ -1,0 +1,25 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/cache": true,
+    "**/CVS": true
+  },
+  "hide-files.files": [],
+
+  // Настройки для Oxc
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "always",
+    "source.organizeImports.biome": "always"
+  },
+  "biome.lsp.trace.server": "verbose",
+  "biome.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  "[javascript,typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}

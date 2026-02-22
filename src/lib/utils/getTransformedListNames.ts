@@ -1,4 +1,4 @@
-import { ProjectListItem } from '@/types';
+import type { ProjectListItem } from '@/types';
 import { getBranchName } from './getBranchName';
 
 export async function getTransformedListNames(
